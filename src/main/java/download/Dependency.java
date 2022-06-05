@@ -48,5 +48,16 @@ public class Dependency {
         this.version = version;
     }
 
+    private static final  String linkFormat = "https://repo1.maven.org/maveb2/%s/%s/%s/%s";
 
+    public String getDownloadLink(){
+        String groupIdWithSlash = groupId.replace(".","/");
+        return  String.format(linkFormat, groupIdWithSlash, artifactId,version,getFileName());
+
+    }
+    private static final String nameFormat = "%s-%s.jar";
+
+    public String getFileName(){
+        return String.format(nameFormat,artifactId,version);
+    }
 }
